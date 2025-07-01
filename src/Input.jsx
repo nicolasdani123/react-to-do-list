@@ -1,59 +1,99 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react"
+import "./assets/App.css"
 
-const key = "toDoList"
 function Input() {
-    const [input, setInput] = useState("")
-    const [todo, setTodo] = useState([])
+  const [input, setInput] = useState("")
+  const [todo, setTodo] = useState([])
+  const [edit,setEdit] = useState(null)
+  const isrender = useRef(true)
+  const key = "toDoList"
+  const handleChangeInput = (e)=>{
+
+    setInput(e.target.value)
+
+  }
 
 
-    useEffect(() => {
-     const save =  localStorage.getItem(key)
-        setTodo(save? JSON.parse(save): [])
-    },[])
+  const createTask = () => {
+    if (!input.trim()) return
 
-    useEffect(()=>{
-   localStorage.setItem(key,JSON.stringify(todo))
-    },[todo])
-    const addTask = () => {
-        if (!input.trim()) return
-
-        setTodo([...todo,
-        {
-            id: Date.now(),
-            text: input,
-        }
-        ])
-        setInput("")
+    setTodo([...todo, {
+      id: Date.now(),
+      value: input,
     }
-    function taskRemove(id) {
-        const taskFiltered = todo.filter((item) => item.id !== id)
-        setTodo(taskFiltered)
+    ])
+    setInput("")
+  }
+  const saveTask = ()=>{
+    if(!input.trim()) return
+
+    if(edit !== null){
+      const updatedTask = todo.map((item)=> {
+  return item.id === edit ? {...item,value: input} :item
+
+
+
+
+      })
+
+      setTodo(updatedTask)
+      setEdit(null)
+      setInput("")
     }
-    return (
-        <div className="app">
+  }
+  const taskEdit = (item)=>{
+ setInput(item.value)
+ setEdit(item.id)
+  }
 
-            <h1>to-do-list</h1>
+  const taskRemove = (taskId) => {
+    
+      const taskFiltred = todo.filter((item) => item.id !== taskId)
+      setTodo(taskFiltred)
+    
+  }
 
-            <div className="app-container">
-                <input type="text"
-                    value={input} onChange={(e) => setInput(e.target.value)} />
-                <button onClick={addTask}>adicionar</button>
+  useEffect(()=>{
 
+    const getTask = JSON.parse(localStorage.getItem(key) || "[]")
+    setTodo(getTask)
+
+
+  },[])
+  useEffect(()=>{
+  if(isrender.current) {
+    isrender.current = false
+    return
+  }
+    localStorage.setItem(key,JSON.stringify(todo))
+    
+  },[todo])
+
+  return (
+    <div className="container">
+
+      <h1>to-do-list</h1>
+      <div className="container-content">
+        <input type="text" value={input}
+     onChange={handleChangeInput}
+placeholder="digite uma nova tarefa" />
+      <button onClick={edit? saveTask:createTask}> {edit? "salvar":"adicionar"}</button>
+      </div>
+      <div className="container-list">
+        <ul>
+
+          {todo.map((item) => {
+            return <li key={item.id}><span>{item.value}</span> 
+              
+            <div className="group-button">
+              <button className="button-edit" onClick={ ()=> taskEdit(item)}>editar</button> 
+            <button className="button-delete" onClick={() => taskRemove(item.id)}>deletar</button>
             </div>
-
-            <div className="app-content">
-                <ul>
-                    {todo.map((item, index) => {
-                        return <li key={item.id}>{index + 1} tarefa:{item.text} <button onClick={() => taskRemove(item.id)}>remover</button></li>
-                    })}
-                </ul>
-
-            </div>
-
-
-
-        </div>
-    )
-
+            </li>
+          })}
+        </ul>
+      </div>
+    </div>
+  )
 }
 export default Input
