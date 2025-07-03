@@ -1,26 +1,25 @@
 import TaskItem from "./taskItem"
+import styles from "./styles/TaskItem.module.css"
+
 function TaskList({todo,handleEdit,handleRemove}){
 return (
-    <div className="container">
+    <div>
+        <ul className={styles.containerList} >
 
-        <ul>
-            {todo.map((item)=> {
+            {todo.map((item)=>{
+
                 return (
 
                     <TaskItem
-                    
                     key={item.id}
-                    todo={item}
-                    handleEdit={()=> handleEdit(item)}
-                    handleRemove={()=> handleRemove(item.id)}
+                    todo = {item}
+                    handleEdit = {()=> handleEdit(item)}
+                    handleRemove = {()=> handleRemove(item.id) }
                     
                     />
                 )
             })}
-
-
         </ul>
-         
     </div>
 )
 }

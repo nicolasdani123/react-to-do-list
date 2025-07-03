@@ -1,0 +1,54 @@
+.containerList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.groupButtons button {
+    padding: 0.5rem 0.3rem;
+    margin: 0  0.4rem ;
+    border: none;
+    border-radius: 0.4rem;
+    color: white;
+
+}
+.li {
+   
+    display: flex;
+    align-items: center;
+    width: 320px;
+    height:55px;
+    margin: 0.5rem 1rem;
+    background-color: rgb(241, 242, 244);
+}
+.spanValue {
+    flex: 1;
+   margin:  0 0 0 1rem;
+   font-size: 13px;
+
+}
+.buttonEdit {
+    background-color: rgba(3, 95, 186, 0.367);
+    transition: background 0.3s ease;
+}
+.buttonRemove {
+    background-color: rgba(255, 13, 13, 0.336);
+    transition: background 0.3s ease;
+    
+}
+.buttonEdit:hover {
+    cursor: pointer;
+    background-color: rgba(3, 94, 186, 0.567);
+
+
+
+}
+.buttonRemove:hover {
+    cursor: pointer;
+    background-color: rgba(255, 13, 13, 0.516);
+
+    
+}

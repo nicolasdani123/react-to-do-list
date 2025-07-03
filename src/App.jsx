@@ -56,19 +56,22 @@ function App() {
 
   return (
     <div className="container">
-      <TaskInput
-        onChangeInput={onChangeInput}
-        input={input}
-        createTask={createTask}
-        edit={edit}
-      />
-    
+   
+   <TaskInput 
+   input={input}
+   onChangeInput = {onChangeInput}
+   edit = {edit}
+   createTask = {createTask}
+   
+   
+   />
+<TaskList
+ todo = {todo}
+ handleEdit = {handleEdit}
+ handleRemove = {handleRemove}
+/>
+   
 
-      <TaskList 
-      todo = {todo}
-      handleEdit = {handleEdit}
-      handleRemove = {handleRemove} 
-      />
 
     </div>
   )

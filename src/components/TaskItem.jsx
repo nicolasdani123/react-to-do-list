@@ -1,15 +1,15 @@
-function TaskItem({ handleEdit, todo, handleRemove }) {
+import styles from "./styles/taskItem.module.css"
+function TaskItem({ todo, handleEdit, handleRemove }) {
+  return (
+    <li className= {styles.li}>
+      <span  className= {styles.spanValue}>{todo.value}</span>
 
-    return (
-            <li>
-                <span>{todo.value}</span>
-                <div className="group-buttons">
-                    <button onClick={handleEdit}>editar</button>
-                    <button onClick={handleRemove}>remove</button>
-                </div>
-            </li>
-
-    )
-
+      <div className={styles.groupButtons}>
+      <button  className={styles.buttonEdit} onClick={handleEdit}>editar</button>
+      <button className={styles.buttonRemove} onClick={handleRemove}>remover</button>
+      </div>
+    </li>
+  );
 }
-export default TaskItem
+
+export default TaskItem;
