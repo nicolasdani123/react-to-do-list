@@ -1,12 +1,40 @@
-# React + Vite
+# 📝 To-Do List - React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação simples de lista de tarefas desenvolvida com **React.js**. Permite adicionar, editar, remover e salvar tarefas no `localStorage`.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+⚠️ **Esta é a primeira versão do projeto. Novas funcionalidades e melhorias serão adicionadas com o passar das semanas.**
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔗 Links
+
+- 🔴 Deploy: [https://react-to-do-listv10.vercel.app/](https://react-to-do-listv10.vercel.app/)
+- 🧠 Código-fonte: [https://github.com/nicolasdani123/react-to-do-list](https://github.com/nicolasdani123/react-to-do-list)
+
+## 🚀 Funcionalidades
+
+- ✅ Adicionar nova tarefa
+- ✅ Editar tarefa existente
+- ✅ Remover tarefa
+- ✅ Armazenamento persistente com `localStorage`
+
+## 💻 Tecnologias
+
+- React.js
+- CSS
+- Vite
+- localStorage
+
+## 📂 Estrutura
+
+src/
+├── components/
+│ ├── TaskInput.jsx
+│ ├── TaskItem.jsx
+│ └── TaskList.jsx
+├── styles.css
+└── App.jsx
+
+
