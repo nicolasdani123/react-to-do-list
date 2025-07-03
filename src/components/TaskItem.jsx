@@ -1,4 +1,4 @@
-import styles from "./styles/taskItem.module.css"
+import styles from "./styles/TaskItem.module.css"
 function TaskItem({ todo, handleEdit, handleRemove }) {
   return (
     <li className= {styles.li}>
