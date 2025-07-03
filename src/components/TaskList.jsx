@@ -1,4 +1,4 @@
-import TaskItem from "./taskItem"
+import TaskItem from "./TaskItem"
 import styles from "./styles/TaskItem.module.css"
 
 function TaskList({todo,handleEdit,handleRemove}){
